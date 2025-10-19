@@ -1,0 +1,66 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="using:Tagger.Avalonia.Models"
+             xmlns:vm="clr-namespace:Tagger.Avalonia.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Tagger.Avalonia.Views.MainView"
+             x:DataType="vm:MainViewModel">
+  <Design.DataContext>
+    <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+    <vm:MainViewModel />
+  </Design.DataContext>
+    <ScrollViewer>	    
+        <StackPanel Spacing="12" VerticalAlignment="Center">
+            <StackPanel Margin="0,12,0,0" Spacing="4" HorizontalAlignment="Center">
+                <TextBlock Text="{Binding ModelPath,Mode=OneWay}"/>
+                <TextBlock Text="{Binding TagsPath,Mode=OneWay}"/>
+                <TextBlock Text="{Binding ConfigPath,Mode=OneWay}"/>
+                <TextBlock Text="{Binding ImagePath,Mode=OneWay}"/>
+            </StackPanel>
+            <StackPanel Spacing="12" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Model" Command="{Binding SelectModelPathCommand}"/>
+                <Button Content="Tags" Command="{Binding SelectTagsPathCommand}"/>
+                <Button Content="Config" Command="{Binding SelectConfigPathCommand}"/>
+                <Button Content="Select Image" Command="{Binding SelectImagePathCommand}"/>
+            </StackPanel>
+            <Image Width="400" Source="{Binding Image^,Mode=OneWay}"/>
+            <Button Classes="accent" HorizontalAlignment="Center" Content="Inference" Command="{Binding InferenceCommand}"/>
+
+            <ListBox ItemsSource="{Binding CharacterTags}">
+                <ListBox.DataTemplates>
+                    <DataTemplate x:DataType="models:TagInfo">
+                        <Grid>
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="{Binding Precent}" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.DataTemplates>
+            </ListBox>
+
+            <ListBox ItemsSource="{Binding RatingTags}">
+                <ListBox.DataTemplates>
+                    <DataTemplate x:DataType="models:TagInfo">
+                        <Grid>
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="{Binding Precent}" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.DataTemplates>
+            </ListBox>
+
+            <ListBox ItemsSource="{Binding GeneralTags}">
+                <ListBox.DataTemplates>
+                    <DataTemplate x:DataType="models:TagInfo">
+                        <Grid>
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="{Binding Precent}" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.DataTemplates>
+            </ListBox>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>
