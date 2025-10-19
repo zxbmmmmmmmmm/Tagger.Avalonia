@@ -12,15 +12,10 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainViewModel />
   </Design.DataContext>
-    <ScrollViewer>	    
+    <Grid Margin="0,48,0,0">
+		 <ScrollViewer>	    
         <StackPanel Spacing="12" VerticalAlignment="Center">
-            <StackPanel Margin="0,12,0,0" Spacing="4" HorizontalAlignment="Center">
-                <TextBlock Text="{Binding ModelPath,Mode=OneWay}"/>
-                <TextBlock Text="{Binding TagsPath,Mode=OneWay}"/>
-                <TextBlock Text="{Binding ConfigPath,Mode=OneWay}"/>
-                <TextBlock Text="{Binding ImagePath,Mode=OneWay}"/>
-            </StackPanel>
-            <StackPanel Spacing="12" Orientation="Horizontal" HorizontalAlignment="Center">
+            <StackPanel Margin="0,12,0,0" Spacing="12" Orientation="Horizontal" HorizontalAlignment="Center">
                 <Button Content="Model" Command="{Binding SelectModelPathCommand}"/>
                 <Button Content="Tags" Command="{Binding SelectTagsPathCommand}"/>
                 <Button Content="Config" Command="{Binding SelectConfigPathCommand}"/>
@@ -63,4 +58,6 @@
             </ListBox>
         </StackPanel>
     </ScrollViewer>
+    </Grid>
+   
 </UserControl>

@@ -2,9 +2,13 @@
   <Folder Name="/Solution Items/">
     <File Path="Directory.Packages.props" />
   </Folder>
-  <Project Path="Tagger.Avalonia.Android/Tagger.Avalonia.Android.csproj" />
+  <Project Path="Tagger.Avalonia.Android/Tagger.Avalonia.Android.csproj">
+    <Deploy />
+  </Project>
   <Project Path="Tagger.Avalonia.Browser/Tagger.Avalonia.Browser.csproj" />
   <Project Path="Tagger.Avalonia.Desktop/Tagger.Avalonia.Desktop.csproj" />
-  <Project Path="Tagger.Avalonia.iOS/Tagger.Avalonia.iOS.csproj" />
+  <Project Path="Tagger.Avalonia.iOS/Tagger.Avalonia.iOS.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
   <Project Path="Tagger.Avalonia/Tagger.Avalonia.csproj" />
 </Solution>
